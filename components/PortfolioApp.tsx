@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import TabNav from '@/components/TabNav';
+import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import HomeTab from '@/components/tabs/HomeTab';
 import ProjectsTab from '@/components/tabs/ProjectsTab';
@@ -17,6 +18,7 @@ export default function PortfolioApp() {
 
   return (
     <>
+      <Header onNavigate={setActive} />
       <AnimatePresence mode="wait">
         <motion.div
           key={active}

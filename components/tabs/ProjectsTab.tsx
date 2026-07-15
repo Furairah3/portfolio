@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { ArrowUpRight, FlaskConical } from 'lucide-react';
 import TiltCard from '@/components/TiltCard';
 import { PROJECTS } from '@/lib/projects';
@@ -34,30 +35,42 @@ export default function ProjectsTab() {
             transition={{ duration: 0.5, delay: (i % 4) * 0.08 }}
             className="group focus-ring block rounded-[28px]"
           >
-            <TiltCard className={`h-full p-6 transition-shadow hover:shadow-2xl ${project.featured ? 'ring-1 ring-aurora-violet/30' : ''}`}>
-              <div className="flex items-start justify-between gap-3">
-                <h3 className="font-display text-lg font-bold text-slate-900 dark:text-white">{project.title}</h3>
-                <ArrowUpRight
-                  className="h-5 w-5 shrink-0 text-slate-400 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 dark:text-white/40"
-                  aria-hidden="true"
+            <TiltCard className={`h-full overflow-hidden !p-0 transition-shadow hover:shadow-2xl ${project.featured ? 'ring-1 ring-aurora-violet/30' : ''}`}>
+              <div className="relative aspect-[1200/630] w-full overflow-hidden bg-slate-200 dark:bg-white/10">
+                <Image
+                  src={project.image}
+                  alt=""
+                  fill
+                  sizes="(min-width: 640px) 50vw, 100vw"
+                  className="object-cover"
+                  unoptimized
                 />
               </div>
-              {project.org && (
-                <p className="mt-1 text-xs font-medium text-slate-500 dark:text-white/50">{project.org}</p>
-              )}
-              <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-white/70">{project.description}</p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                <span className="glass-pill px-3 py-1 text-xs font-semibold text-aurora-violet dark:text-aurora-blue">
-                  {project.language}
-                </span>
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full bg-slate-900/5 px-3 py-1 text-xs font-medium text-slate-600 dark:bg-white/10 dark:text-white/60"
-                  >
-                    {tag}
+              <div className="p-6">
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="font-display text-lg font-bold text-slate-900 dark:text-white">{project.title}</h3>
+                  <ArrowUpRight
+                    className="h-5 w-5 shrink-0 text-slate-400 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 dark:text-white/40"
+                    aria-hidden="true"
+                  />
+                </div>
+                {project.org && (
+                  <p className="mt-1 text-xs font-medium text-slate-500 dark:text-white/50">{project.org}</p>
+                )}
+                <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-white/70">{project.description}</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <span className="glass-pill px-3 py-1 text-xs font-semibold text-aurora-violet dark:text-aurora-blue">
+                    {project.language}
                   </span>
-                ))}
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full bg-slate-900/5 px-3 py-1 text-xs font-medium text-slate-600 dark:bg-white/10 dark:text-white/60"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </TiltCard>
           </motion.a>
