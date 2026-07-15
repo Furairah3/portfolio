@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Manrope } from 'next/font/google';
 import AuroraBackground from '@/components/AuroraBackground';
+import { LanguageProvider } from '@/lib/LanguageContext';
 import './globals.css';
 
 const sans = Inter({ subsets: ['latin'], variable: '--font-sans' });
@@ -19,8 +20,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`dark ${sans.variable} ${display.variable}`}>
       <body>
-        <AuroraBackground />
-        <main className="relative">{children}</main>
+        <LanguageProvider>
+          <AuroraBackground />
+          <main className="relative">{children}</main>
+        </LanguageProvider>
       </body>
     </html>
   );

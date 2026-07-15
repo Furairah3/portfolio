@@ -11,6 +11,8 @@ import AboutSection from '@/components/AboutSection';
 import type { TabId } from '@/lib/tabs';
 import { PROFILE } from '@/lib/profile';
 import { PROJECTS } from '@/lib/projects';
+import { useLanguage } from '@/lib/LanguageContext';
+import { t } from '@/lib/translations';
 
 const heroContainer: Variants = {
   hidden: {},
@@ -22,36 +24,40 @@ const heroItem: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
 
-const QUICK_LOOK: { id: TabId; icon: typeof Briefcase; title: string; body: string; cta: string }[] = [
-  {
-    id: 'experience',
-    icon: Briefcase,
-    title: 'Experience',
-    body: 'Currently a Risk & Compliance Intern on the QuantRisk project at MTN Ghana — plus AI research, QA, and years of hands-on healthcare work in Niger.',
-    cta: 'See the timeline',
-  },
-  {
-    id: 'projects',
-    icon: FolderGit2,
-    title: 'Projects',
-    body: `${PROJECTS.length} real builds — from a nationwide disability-rights website to an enterprise risk platform for MTN Ghana.`,
-    cta: 'Browse projects',
-  },
-  {
-    id: 'contact',
-    icon: MessageCircle,
-    title: 'Contact',
-    body: "Open to internships, collaborations, and mission-driven projects. I'd love to hear from you.",
-    cta: 'Get in touch',
-  },
-];
-
 export default function HomeTab({ onNavigate }: { onNavigate: (id: TabId) => void }) {
   const heroRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const heroY = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : 80]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.9], [1, shouldReduceMotion ? 1 : 0.25]);
+  const { locale } = useLanguage();
+
+  const QUICK_LOOK: { id: TabId; icon: typeof Briefcase; title: string; body: string; cta: string }[] = [
+    {
+      id: 'experience',
+      icon: Briefcase,
+      title: t(locale, 'quickLook', 'experienceTitle'),
+      body: t(locale, 'quickLook', 'experienceBody'),
+      cta: t(locale, 'quickLook', 'experienceCta'),
+    },
+    {
+      id: 'projects',
+      icon: FolderGit2,
+      title: t(locale, 'quickLook', 'projectsTitle'),
+      body:
+        locale === 'fr'
+          ? `${PROJECTS.length} projets réels — d'un site national pour les droits des personnes handicapées à une plateforme de gestion des risques pour MTN Ghana.`
+          : `${PROJECTS.length} real builds — from a nationwide disability-rights website to an enterprise risk platform for MTN Ghana.`,
+      cta: t(locale, 'quickLook', 'projectsCta'),
+    },
+    {
+      id: 'contact',
+      icon: MessageCircle,
+      title: t(locale, 'quickLook', 'contactTitle'),
+      body: t(locale, 'quickLook', 'contactBody'),
+      cta: t(locale, 'quickLook', 'contactCta'),
+    },
+  ];
 
   return (
     <div className="pb-10 pt-24">
@@ -67,7 +73,7 @@ export default function HomeTab({ onNavigate }: { onNavigate: (id: TabId) => voi
             variants={heroItem}
             className="glass-pill px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-aurora-blue"
           >
-            Software Engineer
+            {t(locale, 'hero', 'eyebrow')}
           </motion.p>
 
           <motion.h1
@@ -80,9 +86,7 @@ export default function HomeTab({ onNavigate }: { onNavigate: (id: TabId) => voi
           </motion.h1>
 
           <motion.p variants={heroItem} className="mt-6 max-w-xl text-balance text-lg text-slate-300">
-            I build health, education, and disability-inclusion technology for underserved communities across
-            West and East Africa — from a nationwide disability-rights website to offline-first health alert
-            systems.
+            {t(locale, 'hero', 'intro')}
           </motion.p>
 
           <motion.div variants={heroItem} className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -90,13 +94,13 @@ export default function HomeTab({ onNavigate }: { onNavigate: (id: TabId) => voi
               onClick={() => onNavigate('projects')}
               className="focus-ring inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg transition-transform hover:scale-105"
             >
-              View Projects <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              {t(locale, 'hero', 'viewProjects')} <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </button>
             <button
               onClick={() => onNavigate('contact')}
               className="glass-pill focus-ring inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
             >
-              <Mail className="h-4 w-4" aria-hidden="true" /> Get in Touch
+              <Mail className="h-4 w-4" aria-hidden="true" /> {t(locale, 'hero', 'getInTouch')}
             </button>
             <a
               href={PROFILE.github}
@@ -111,7 +115,7 @@ export default function HomeTab({ onNavigate }: { onNavigate: (id: TabId) => voi
           <motion.div variants={heroItem} className="w-full">
             <TiltCard className="mt-14 w-full p-6">
               <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-slate-400">
-                Tools &amp; Technologies
+                {t(locale, 'hero', 'tools')}
               </p>
               <SkillsMarquee />
             </TiltCard>
@@ -131,7 +135,7 @@ export default function HomeTab({ onNavigate }: { onNavigate: (id: TabId) => voi
         className="mt-20"
       >
         <p className="text-center text-xs font-semibold uppercase tracking-widest text-slate-400">
-          A Look At The Work
+          {t(locale, 'work', 'eyebrow')}
         </p>
         <div className="mt-6">
           <ProjectImageMarquee />

@@ -6,17 +6,22 @@ import { ArrowUpRight, FlaskConical } from 'lucide-react';
 import TiltCard from '@/components/TiltCard';
 import { PROJECTS } from '@/lib/projects';
 import { COURSEWORK } from '@/lib/coursework';
+import { useLanguage } from '@/lib/LanguageContext';
+import { t } from '@/lib/translations';
 
 export default function ProjectsTab() {
+  const { locale } = useLanguage();
+
   return (
     <div className="mx-auto max-w-5xl px-6 pb-10 pt-24">
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-        <p className="text-xs font-semibold uppercase tracking-widest text-aurora-blue">Selected Work</p>
-        <h2 className="mt-2 font-display text-3xl font-extrabold text-white sm:text-4xl">Projects</h2>
-        <p className="mt-3 max-w-2xl text-slate-300">
-          Real repositories, pulled straight from GitHub — mission-driven builds for health access, education
-          access, and disability inclusion.
+        <p className="text-xs font-semibold uppercase tracking-widest text-aurora-blue">
+          {t(locale, 'projects', 'eyebrow')}
         </p>
+        <h2 className="mt-2 font-display text-3xl font-extrabold text-white sm:text-4xl">
+          {t(locale, 'projects', 'title')}
+        </h2>
+        <p className="mt-3 max-w-2xl text-slate-300">{t(locale, 'projects', 'intro')}</p>
       </motion.div>
 
       <div className="mt-10 grid gap-5 sm:grid-cols-2">
@@ -51,14 +56,18 @@ export default function ProjectsTab() {
               </div>
               <div className="p-6">
                 <div className="flex items-start justify-between gap-3">
-                  <h3 className="font-display text-lg font-bold text-white">{project.title}</h3>
+                  <h3 className="font-display text-lg font-bold text-white">
+                    {locale === 'fr' ? project.titleFr : project.titleEn}
+                  </h3>
                   <ArrowUpRight
                     className="h-5 w-5 shrink-0 text-white/40 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                     aria-hidden="true"
                   />
                 </div>
                 {project.org && <p className="mt-1 text-xs font-medium text-slate-400">{project.org}</p>}
-                <p className="mt-2 text-sm leading-relaxed text-slate-300">{project.description}</p>
+                <p className="mt-2 text-sm leading-relaxed text-slate-300">
+                  {locale === 'fr' ? project.descriptionFr : project.descriptionEn}
+                </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   <span className="glass-pill px-3 py-1 text-xs font-semibold text-aurora-blue">
                     {project.language}
@@ -82,15 +91,15 @@ export default function ProjectsTab() {
         transition={{ duration: 0.5 }}
         className="mt-16"
       >
-        <p className="text-xs font-semibold uppercase tracking-widest text-aurora-blue">Also</p>
-        <h3 className="mt-2 font-display text-xl font-bold text-white">Coursework &amp; Research</h3>
-        <p className="mt-2 max-w-2xl text-sm text-slate-300">
-          Smaller academic projects without a standalone public repo.
+        <p className="text-xs font-semibold uppercase tracking-widest text-aurora-blue">
+          {t(locale, 'projects', 'also')}
         </p>
+        <h3 className="mt-2 font-display text-xl font-bold text-white">{t(locale, 'projects', 'coursework')}</h3>
+        <p className="mt-2 max-w-2xl text-sm text-slate-300">{t(locale, 'projects', 'courseworkNote')}</p>
 
         <TiltCard className="mt-6 divide-y divide-white/10 p-2">
           {COURSEWORK.map((item) => (
-            <div key={item.title} className="flex items-start gap-3 p-4">
+            <div key={item.titleEn} className="flex items-start gap-3 p-4">
               {item.image ? (
                 <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg bg-white">
                   <Image src={item.image} alt="" fill sizes="40px" className="object-contain p-1" />
@@ -100,10 +109,14 @@ export default function ProjectsTab() {
               )}
               <div>
                 <div className="flex flex-wrap items-baseline gap-x-2">
-                  <h4 className="text-sm font-semibold text-white">{item.title}</h4>
-                  <span className="text-xs text-slate-400">{item.period}</span>
+                  <h4 className="text-sm font-semibold text-white">
+                    {locale === 'fr' ? item.titleFr : item.titleEn}
+                  </h4>
+                  <span className="text-xs text-slate-400">{locale === 'fr' ? item.periodFr : item.periodEn}</span>
                 </div>
-                <p className="mt-1 text-sm text-slate-300">{item.description}</p>
+                <p className="mt-1 text-sm text-slate-300">
+                  {locale === 'fr' ? item.descriptionFr : item.descriptionEn}
+                </p>
               </div>
             </div>
           ))}

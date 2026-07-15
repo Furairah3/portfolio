@@ -2,39 +2,62 @@
 // these (likely inside shared/private course repos), so they're listed as text
 // rather than linked project cards.
 export type CourseworkItem = {
-  title: string;
-  period: string;
-  description: string;
+  titleEn: string;
+  titleFr: string;
+  periodEn: string;
+  periodFr: string;
+  descriptionEn: string;
+  descriptionFr: string;
   image?: string;
 };
 
 export const COURSEWORK: CourseworkItem[] = [
   {
-    title: 'AI Attendance System',
-    period: 'May – Jun 2025',
-    description:
+    titleEn: 'AI Attendance System',
+    titleFr: 'Système de Présence par IA',
+    periodEn: 'May – Jun 2025',
+    periodFr: 'Mai – Juin 2025',
+    descriptionEn:
       'AI-powered attendance system using Python, OpenCV, and SQLite on Google Colab — facial recognition and database management automating student attendance tracking, with 90% accuracy.',
+    descriptionFr:
+      "Système de présence propulsé par l'IA utilisant Python, OpenCV et SQLite sur Google Colab — reconnaissance faciale et gestion de base de données automatisant le suivi de présence des étudiants, avec 90 % de précision.",
     image: '/images/projects/ai-attendance-logo.png',
   },
   {
-    title: 'Afrobarometer Healthcare Study in Niger',
-    period: 'Oct – Dec 2024',
-    description:
+    titleEn: 'Afrobarometer Healthcare Study in Niger',
+    titleFr: 'Étude Afrobaromètre sur la Santé au Niger',
+    periodEn: 'Oct – Dec 2024',
+    periodFr: 'Oct – Déc 2024',
+    descriptionEn:
       'Statistical analysis of healthcare access in Niger using Afrobarometer survey data, identifying trends and disparities in healthcare services.',
+    descriptionFr:
+      "Analyse statistique de l'accès aux soins de santé au Niger à partir des données d'enquête Afrobaromètre, identifiant tendances et disparités dans les services de santé.",
   },
   {
-    title: 'CO₂ Emissions Data Analysis',
-    period: 'May – Aug 2024',
-    description: 'Data visualization tool built in Python analyzing CO₂ emissions trends from climate datasets.',
+    titleEn: 'CO₂ Emissions Data Analysis',
+    titleFr: "Analyse de Données sur les Émissions de CO₂",
+    periodEn: 'May – Aug 2024',
+    periodFr: 'Mai – Août 2024',
+    descriptionEn: 'Data visualization tool built in Python analyzing CO₂ emissions trends from climate datasets.',
+    descriptionFr:
+      "Outil de visualisation de données développé en Python analysant les tendances des émissions de CO₂ à partir de jeux de données climatiques.",
   },
   {
-    title: 'Discrete Math E-Learning Website',
-    period: 'Oct – Dec 2024',
-    description: 'Responsive HTML/CSS educational website making Discrete Math concepts more accessible.',
+    titleEn: 'Discrete Math E-Learning Website',
+    titleFr: "Site E-Learning de Mathématiques Discrètes",
+    periodEn: 'Oct – Dec 2024',
+    periodFr: 'Oct – Déc 2024',
+    descriptionEn: 'Responsive HTML/CSS educational website making Discrete Math concepts more accessible.',
+    descriptionFr:
+      "Site web pédagogique responsive (HTML/CSS) rendant les concepts de mathématiques discrètes plus accessibles.",
   },
   {
-    title: 'Ghanaian Recipe Platform',
-    period: 'Oct – Dec 2024',
-    description: 'Java (OOP) platform showcasing Ghanaian recipes with step-by-step cooking instructions.',
+    titleEn: 'Ghanaian Recipe Platform',
+    titleFr: 'Plateforme de Recettes Ghanéennes',
+    periodEn: 'Oct – Dec 2024',
+    periodFr: 'Oct – Déc 2024',
+    descriptionEn: 'Java (OOP) platform showcasing Ghanaian recipes with step-by-step cooking instructions.',
+    descriptionFr:
+      "Plateforme Java (POO) présentant des recettes ghanéennes avec instructions de cuisson étape par étape.",
   },
 ];

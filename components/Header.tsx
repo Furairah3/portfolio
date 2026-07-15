@@ -4,11 +4,12 @@ import Image from 'next/image';
 import { Mail, Link2, ExternalLink } from 'lucide-react';
 import { PROFILE } from '@/lib/profile';
 import type { TabId } from '@/lib/tabs';
+import LanguageToggle from '@/components/LanguageToggle';
 
 export default function Header({ onNavigate }: { onNavigate: (id: TabId) => void }) {
   return (
-    <header className="fixed inset-x-0 top-4 z-40 px-4">
-      <div className="glass-pill mx-auto flex max-w-3xl items-center justify-between px-3 py-2 sm:px-4">
+    <header className="fixed inset-x-0 top-0 z-40 w-full border-b border-white/10 bg-[#0a0c1e]/85 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-8">
         <button
           onClick={() => onNavigate('home')}
           className="focus-ring flex items-center gap-2.5 rounded-full py-1 pr-2"
@@ -19,7 +20,8 @@ export default function Header({ onNavigate }: { onNavigate: (id: TabId) => void
           <span className="hidden text-sm font-semibold text-white sm:inline">{PROFILE.name}</span>
         </button>
 
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5 sm:gap-2.5">
+          <LanguageToggle />
           <a
             href={`mailto:${PROFILE.emailPersonal}`}
             aria-label="Email"

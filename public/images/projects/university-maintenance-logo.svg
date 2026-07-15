@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <linearGradient id="um-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(55,75)">
+    <path d="M20 190 L20 90 L100 30 L180 90 L180 190 Z" fill="none" stroke="url(#um-grad)" stroke-width="10" stroke-linejoin="round"/>
+    <rect x="55" y="120" width="30" height="70" fill="url(#um-grad)"/>
+    <rect x="115" y="100" width="30" height="30" fill="url(#um-grad)" opacity="0.8"/>
+    <g transform="translate(140,140) rotate(35)">
+      <rect x="-8" y="-45" width="16" height="70" rx="8" fill="#0f172a"/>
+      <circle cx="0" cy="-45" r="20" fill="none" stroke="#0f172a" stroke-width="10"/>
+    </g>
+  </g>
+  <text x="290" y="170" font-family="Arial, sans-serif" font-size="52" font-weight="800" fill="#0f172a">Campus Maintenance</text>
+  <text x="290" y="215" font-family="Arial, sans-serif" font-size="28" font-weight="600" fill="#64748b">Request System</text>
+</svg>

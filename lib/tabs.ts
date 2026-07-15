@@ -3,9 +3,9 @@ import type { LucideIcon } from 'lucide-react';
 
 export type TabId = 'home' | 'projects' | 'experience' | 'contact';
 
-export const TABS: { id: TabId; label: string; icon: LucideIcon }[] = [
-  { id: 'home', label: 'Home', icon: Home },
-  { id: 'projects', label: 'Projects', icon: FolderGit2 },
-  { id: 'experience', label: 'Experience', icon: Briefcase },
-  { id: 'contact', label: 'Contact', icon: Mail },
+export const TABS: { id: TabId; icon: LucideIcon }[] = [
+  { id: 'home', icon: Home },
+  { id: 'projects', icon: FolderGit2 },
+  { id: 'experience', icon: Briefcase },
+  { id: 'contact', icon: Mail },
 ];

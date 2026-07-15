@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import { GraduationCap, MapPin, Trophy, Languages } from 'lucide-react';
 import TiltCard from '@/components/TiltCard';
 import { EDUCATION, AWARDS, PROFILE } from '@/lib/profile';
+import { useLanguage } from '@/lib/LanguageContext';
+import { t } from '@/lib/translations';
 
 const listContainer = {
   hidden: {},
@@ -17,6 +19,8 @@ const listItem = {
 };
 
 export default function AboutSection() {
+  const { locale } = useLanguage();
+
   return (
     <div className="mx-auto max-w-3xl px-6">
       <motion.div
@@ -25,8 +29,12 @@ export default function AboutSection() {
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.5 }}
       >
-        <p className="text-xs font-semibold uppercase tracking-widest text-aurora-blue">Get to know me</p>
-        <h2 className="mt-2 font-display text-3xl font-extrabold text-white sm:text-4xl">About</h2>
+        <p className="text-xs font-semibold uppercase tracking-widest text-aurora-blue">
+          {t(locale, 'about', 'eyebrow')}
+        </p>
+        <h2 className="mt-2 font-display text-3xl font-extrabold text-white sm:text-4xl">
+          {t(locale, 'about', 'title')}
+        </h2>
       </motion.div>
 
       <div className="mt-8 grid gap-8 sm:grid-cols-[auto,1fr] sm:items-start">
@@ -52,11 +60,7 @@ export default function AboutSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-center text-slate-300 sm:text-left"
           >
-            I&apos;m a Computer Science student at Ashesi University and a MasterCard Foundation Scholar,
-            originally from Niamey, Niger, now based in Accra, Ghana. Before switching into tech, I trained
-            and worked in nursing — that cross-disciplinary background is a lot of why I keep gravitating
-            toward health and accessibility technology. Outside of code: K-dramas, C-dramas, and gaming with
-            friends.
+            {t(locale, 'about', 'bio')}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -66,7 +70,7 @@ export default function AboutSection() {
             className="mt-4 flex items-center justify-center gap-2 text-sm text-slate-400 sm:justify-start"
           >
             <MapPin className="h-4 w-4 shrink-0 text-aurora-blue" aria-hidden="true" />
-            {PROFILE.location} · from {PROFILE.origin}
+            {PROFILE.location} · {t(locale, 'about', 'from')} {PROFILE.origin}
           </motion.div>
         </div>
       </div>
@@ -74,7 +78,7 @@ export default function AboutSection() {
       <TiltCard className="mt-10 p-8">
         <div className="mb-5 flex items-center gap-2">
           <GraduationCap className="h-5 w-5 text-aurora-blue" aria-hidden="true" />
-          <h3 className="font-display text-lg font-bold text-white">Education</h3>
+          <h3 className="font-display text-lg font-bold text-white">{t(locale, 'about', 'education')}</h3>
         </div>
         <motion.div
           variants={listContainer}
@@ -91,9 +95,9 @@ export default function AboutSection() {
             >
               <div>
                 <p className="text-sm font-semibold text-white">{edu.school}</p>
-                <p className="text-sm text-slate-300">{edu.detail}</p>
+                <p className="text-sm text-slate-300">{locale === 'fr' ? edu.detailFr : edu.detailEn}</p>
               </div>
-              <p className="text-xs font-medium text-slate-400">{edu.period}</p>
+              <p className="text-xs font-medium text-slate-400">{locale === 'fr' ? edu.periodFr : edu.periodEn}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -102,7 +106,7 @@ export default function AboutSection() {
       <TiltCard className="mt-6 p-8">
         <div className="mb-5 flex items-center gap-2">
           <Trophy className="h-5 w-5 text-aurora-blue" aria-hidden="true" />
-          <h3 className="font-display text-lg font-bold text-white">Awards</h3>
+          <h3 className="font-display text-lg font-bold text-white">{t(locale, 'about', 'awards')}</h3>
         </div>
         <motion.div
           variants={listContainer}
@@ -113,15 +117,15 @@ export default function AboutSection() {
         >
           {AWARDS.map((award) => (
             <motion.div
-              key={award.title}
+              key={award.titleEn}
               variants={listItem}
               className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"
             >
               <div>
-                <p className="text-sm font-semibold text-white">{award.title}</p>
-                <p className="text-sm text-slate-300">{award.detail}</p>
+                <p className="text-sm font-semibold text-white">{locale === 'fr' ? award.titleFr : award.titleEn}</p>
+                <p className="text-sm text-slate-300">{locale === 'fr' ? award.detailFr : award.detailEn}</p>
               </div>
-              <p className="text-xs font-medium text-slate-400">{award.period}</p>
+              <p className="text-xs font-medium text-slate-400">{locale === 'fr' ? award.periodFr : award.periodEn}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -130,7 +134,7 @@ export default function AboutSection() {
       <TiltCard className="mt-6 p-8">
         <div className="mb-5 flex items-center gap-2">
           <Languages className="h-5 w-5 text-aurora-blue" aria-hidden="true" />
-          <h3 className="font-display text-lg font-bold text-white">Languages</h3>
+          <h3 className="font-display text-lg font-bold text-white">{t(locale, 'about', 'languages')}</h3>
         </div>
         <motion.div
           variants={listContainer}
@@ -141,11 +145,12 @@ export default function AboutSection() {
         >
           {PROFILE.languages.map((lang) => (
             <motion.span
-              key={lang.name}
+              key={lang.nameEn}
               variants={listItem}
               className="glass-pill px-4 py-1.5 text-sm font-medium text-white/80"
             >
-              {lang.name} <span className="text-slate-400">· {lang.level}</span>
+              {locale === 'fr' ? lang.nameFr : lang.nameEn}{' '}
+              <span className="text-slate-400">· {locale === 'fr' ? lang.levelFr : lang.levelEn}</span>
             </motion.span>
           ))}
         </motion.div>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <linearGradient id="kl-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14b8a6"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(50,70)">
+    <path d="M130 0 C60 0 5 45 5 100 C5 140 30 175 68 192 L55 235 L108 198 C115 199 122 200 130 200 C200 200 255 155 255 100 C255 45 200 0 130 0 Z"
+          fill="url(#kl-grad)"/>
+    <path d="M45 105 L85 105 L100 75 L120 140 L140 95 L155 105 L215 105"
+          fill="none" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="330" y="175" font-family="Arial, sans-serif" font-size="64" font-weight="800" fill="#0f172a">Kalmar Lafiya</text>
+  <text x="330" y="222" font-family="Arial, sans-serif" font-size="28" font-weight="600" fill="#64748b">Health Assistant</text>
+</svg>
