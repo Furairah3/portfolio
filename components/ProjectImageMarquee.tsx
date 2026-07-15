@@ -20,7 +20,7 @@ export default function ProjectImageMarquee() {
         {items.map((project, i) => (
           <div
             key={`${project.name}-${i}`}
-            className="glass relative aspect-[1200/630] w-72 shrink-0 overflow-hidden sm:w-96"
+            className={`glass relative aspect-[1200/630] w-72 shrink-0 overflow-hidden sm:w-96 ${project.imageFit === 'contain' ? 'bg-white' : ''}`}
             aria-hidden={i >= PROJECTS.length}
           >
             <Image
@@ -28,11 +28,11 @@ export default function ProjectImageMarquee() {
               alt=""
               fill
               sizes="384px"
-              className="object-cover"
-              unoptimized
+              className={project.imageFit === 'contain' ? 'object-contain p-8' : 'object-cover'}
+              unoptimized={project.imageFit === 'cover'}
             />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-              <p className="text-sm font-semibold text-white">{project.title}</p>
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+              <p className="text-sm font-semibold text-white drop-shadow">{project.title}</p>
             </div>
           </div>
         ))}

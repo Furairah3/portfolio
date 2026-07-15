@@ -5,6 +5,7 @@ export type CourseworkItem = {
   title: string;
   period: string;
   description: string;
+  image?: string;
 };
 
 export const COURSEWORK: CourseworkItem[] = [
@@ -13,6 +14,7 @@ export const COURSEWORK: CourseworkItem[] = [
     period: 'May – Jun 2025',
     description:
       'AI-powered attendance system using Python, OpenCV, and SQLite on Google Colab — facial recognition and database management automating student attendance tracking, with 90% accuracy.',
+    image: '/images/projects/ai-attendance-logo.png',
   },
   {
     title: 'Afrobarometer Healthcare Study in Niger',

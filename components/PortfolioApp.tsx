@@ -7,7 +7,6 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import HomeTab from '@/components/tabs/HomeTab';
 import ProjectsTab from '@/components/tabs/ProjectsTab';
-import AboutTab from '@/components/tabs/AboutTab';
 import ExperienceTab from '@/components/tabs/ExperienceTab';
 import ContactTab from '@/components/tabs/ContactTab';
 import type { TabId } from '@/lib/tabs';
@@ -29,7 +28,6 @@ export default function PortfolioApp() {
         >
           {active === 'home' && <HomeTab onNavigate={setActive} />}
           {active === 'projects' && <ProjectsTab />}
-          {active === 'about' && <AboutTab />}
           {active === 'experience' && <ExperienceTab />}
           {active === 'contact' && <ContactTab />}
           <Footer />

@@ -1,17 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import { Mail, Link2, ExternalLink } from 'lucide-react';
 import { PROFILE } from '@/lib/profile';
 import type { TabId } from '@/lib/tabs';
-
-function initials(name: string) {
-  return name
-    .split(' ')
-    .map((w) => w[0])
-    .slice(0, 2)
-    .join('')
-    .toUpperCase();
-}
 
 export default function Header({ onNavigate }: { onNavigate: (id: TabId) => void }) {
   return (
@@ -21,19 +13,17 @@ export default function Header({ onNavigate }: { onNavigate: (id: TabId) => void
           onClick={() => onNavigate('home')}
           className="focus-ring flex items-center gap-2.5 rounded-full py-1 pr-2"
         >
-          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-900 text-xs font-bold text-white dark:bg-white dark:text-slate-900">
-            {initials(PROFILE.name)}
+          <span className="relative h-8 w-8 shrink-0 overflow-hidden rounded-full ring-1 ring-white/20">
+            <Image src="/images/avatar.jpg" alt="" fill sizes="32px" className="object-cover" />
           </span>
-          <span className="hidden text-sm font-semibold text-slate-800 dark:text-white sm:inline">
-            {PROFILE.name}
-          </span>
+          <span className="hidden text-sm font-semibold text-white sm:inline">{PROFILE.name}</span>
         </button>
 
         <div className="flex items-center gap-1.5">
           <a
             href={`mailto:${PROFILE.emailPersonal}`}
             aria-label="Email"
-            className="focus-ring flex h-8 w-8 items-center justify-center rounded-full text-slate-600 transition-transform hover:scale-110 dark:text-white/70"
+            className="focus-ring flex h-8 w-8 items-center justify-center rounded-full text-white/70 transition-transform hover:scale-110"
           >
             <Mail className="h-4 w-4" aria-hidden="true" />
           </a>
@@ -42,7 +32,7 @@ export default function Header({ onNavigate }: { onNavigate: (id: TabId) => void
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="focus-ring flex h-8 w-8 items-center justify-center rounded-full text-slate-600 transition-transform hover:scale-110 dark:text-white/70"
+            className="focus-ring flex h-8 w-8 items-center justify-center rounded-full text-white/70 transition-transform hover:scale-110"
           >
             <Link2 className="h-4 w-4" aria-hidden="true" />
           </a>
@@ -51,7 +41,7 @@ export default function Header({ onNavigate }: { onNavigate: (id: TabId) => void
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            className="focus-ring flex h-8 w-8 items-center justify-center rounded-full text-slate-600 transition-transform hover:scale-110 dark:text-white/70"
+            className="focus-ring flex h-8 w-8 items-center justify-center rounded-full text-white/70 transition-transform hover:scale-110"
           >
             <ExternalLink className="h-4 w-4" aria-hidden="true" />
           </a>
