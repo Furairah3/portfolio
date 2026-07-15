@@ -17,7 +17,7 @@ export default function PortfolioApp() {
 
   return (
     <>
-      <Header onNavigate={setActive} />
+      <Header active={active} onNavigate={setActive} />
       <AnimatePresence mode="wait">
         <motion.div
           key={active}
@@ -30,10 +30,12 @@ export default function PortfolioApp() {
           {active === 'projects' && <ProjectsTab />}
           {active === 'experience' && <ExperienceTab />}
           {active === 'contact' && <ContactTab />}
-          <Footer />
+          <Footer onNavigate={setActive} />
         </motion.div>
       </AnimatePresence>
-      <TabNav active={active} onChange={setActive} />
+      <div className="md:hidden">
+        <TabNav active={active} onChange={setActive} />
+      </div>
     </>
   );
 }
