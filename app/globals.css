@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-[#f4f5fb] text-slate-900 antialiased dark:bg-[#05060f] dark:text-white;
+  }
+  ::selection {
+    @apply bg-aurora-violet/30;
+  }
+}
+
+@layer components {
+  /* The core "liquid glass" surface: frosted, refractive, with a soft top
+     specular highlight and an inner rim light — mirrors the look of
+     translucent iOS panels sitting over a moving color field. */
+  .glass {
+    @apply relative overflow-hidden rounded-[28px] border border-white/40 bg-white/30 shadow-[0_8px_32px_rgba(31,38,135,0.12)] backdrop-blur-xl backdrop-saturate-150 dark:border-white/10 dark:bg-white/[0.06] dark:shadow-[0_8px_32px_rgba(0,0,0,0.35)];
+  }
+  .glass::before {
+    content: '';
+    @apply pointer-events-none absolute inset-0 rounded-[28px];
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0.05) 30%,
+      rgba(255, 255, 255, 0) 60%
+    );
+  }
+  .glass-pill {
+    @apply relative overflow-hidden rounded-full border border-white/40 bg-white/40 backdrop-blur-xl backdrop-saturate-150 dark:border-white/10 dark:bg-white/[0.08];
+  }
+
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-aurora-violet focus-visible:ring-offset-2 focus-visible:ring-offset-transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
