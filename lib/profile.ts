@@ -1,5 +1,5 @@
 export const PROFILE = {
-  name: 'Foureiratou Zakari Yaou Idi',
+  name: 'Foureiratou ZAKARI YAOU IDI',
   role: 'Software Engineer',
   location: 'Accra, Ghana',
   origin: 'Niamey, Niger',
@@ -12,6 +12,7 @@ export const PROFILE = {
     { name: 'French', level: 'Fluent' },
     { name: 'Hausa', level: 'Excellent' },
     { name: 'English', level: 'Upper-Intermediate' },
+    { name: 'Swahili', level: 'A1 — learning' },
     { name: 'Arabic', level: 'Beginner' },
   ],
 };

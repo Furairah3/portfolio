@@ -7,36 +7,40 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-[#f4f5fb] text-slate-900 antialiased dark:bg-[#05060f] dark:text-white;
+    @apply bg-[#050611] text-white antialiased;
   }
   ::selection {
-    @apply bg-aurora-violet/30;
+    @apply bg-aurora-violet/40;
   }
 }
 
 @layer components {
-  /* The core "liquid glass" surface: frosted, refractive, with a soft top
-     specular highlight and an inner rim light — mirrors the look of
-     translucent iOS panels sitting over a moving color field. */
+  /* The core "liquid glass" surface: frosted, refractive dark panel with a
+     glowing hairline border and a soft top specular highlight — mirrors
+     translucent iOS panels floating over a moving color field, tuned for
+     a dark "tech" aesthetic. */
   .glass {
-    @apply relative overflow-hidden rounded-[28px] border border-white/40 bg-white/30 shadow-[0_8px_32px_rgba(31,38,135,0.12)] backdrop-blur-xl backdrop-saturate-150 dark:border-white/10 dark:bg-white/[0.06] dark:shadow-[0_8px_32px_rgba(0,0,0,0.35)];
+    @apply relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.06] backdrop-blur-xl backdrop-saturate-150;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.45),
+      0 0 0 1px rgba(99, 102, 241, 0.12),
+      0 0 40px -12px rgba(56, 189, 248, 0.25);
   }
   .glass::before {
     content: '';
     @apply pointer-events-none absolute inset-0 rounded-[28px];
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.5) 0%,
-      rgba(255, 255, 255, 0.05) 30%,
-      rgba(255, 255, 255, 0) 60%
-    );
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 30%, rgba(255, 255, 255, 0) 60%);
   }
   .glass-pill {
-    @apply relative overflow-hidden rounded-full border border-white/40 bg-white/40 backdrop-blur-xl backdrop-saturate-150 dark:border-white/10 dark:bg-white/[0.08];
+    @apply relative overflow-hidden rounded-full border border-white/10 bg-white/[0.08] backdrop-blur-xl backdrop-saturate-150;
+    box-shadow:
+      0 4px 20px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(99, 102, 241, 0.1),
+      0 0 24px -10px rgba(56, 189, 248, 0.3);
   }
 
   .focus-ring {
-    @apply outline-none focus-visible:ring-2 focus-visible:ring-aurora-violet focus-visible:ring-offset-2 focus-visible:ring-offset-transparent;
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-aurora-blue focus-visible:ring-offset-2 focus-visible:ring-offset-[#050611];
   }
 }
 

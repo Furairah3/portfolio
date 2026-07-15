@@ -52,7 +52,7 @@ export default function HomeTab({ onNavigate }: { onNavigate: (id: TabId) => voi
         <h1 className="mt-6 font-display text-4xl font-extrabold leading-tight text-slate-900 dark:text-white sm:text-6xl">
           <KineticText text="Foureiratou" />
           <br />
-          <KineticText text="Zakari Yaou Idi" />
+          <KineticText text="ZAKARI YAOU IDI" />
         </h1>
 
         <p className="mt-6 max-w-xl text-balance text-lg text-slate-600 dark:text-white/70">
