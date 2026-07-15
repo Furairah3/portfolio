@@ -21,7 +21,12 @@ function Track({
   locale: Locale;
 }) {
   return (
-    <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay }}>
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.5, delay }}
+    >
       <div className="mb-5 flex items-center gap-2">
         <Icon className="h-5 w-5 text-aurora-blue" aria-hidden="true" />
         <h3 className="font-display text-lg font-bold text-white">{title}</h3>
@@ -51,12 +56,17 @@ function Track({
   );
 }
 
-export default function ExperienceTab() {
+export default function ExperienceSection() {
   const { locale } = useLanguage();
 
   return (
-    <div className="mx-auto max-w-3xl px-6 pb-10 pt-24">
-      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+    <div className="mx-auto max-w-3xl px-6 py-16">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.5 }}
+      >
         <p className="text-xs font-semibold uppercase tracking-widest text-aurora-blue">
           {t(locale, 'experience', 'eyebrow')}
         </p>

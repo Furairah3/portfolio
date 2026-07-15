@@ -1,40 +1,53 @@
 'use client';
 
-import { useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import TabNav from '@/components/TabNav';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import HomeTab from '@/components/tabs/HomeTab';
-import ProjectsTab from '@/components/tabs/ProjectsTab';
-import ExperienceTab from '@/components/tabs/ExperienceTab';
-import ContactTab from '@/components/tabs/ContactTab';
-import type { TabId } from '@/lib/tabs';
+import Hero from '@/components/Hero';
+import AboutSection from '@/components/AboutSection';
+import ProjectsSection from '@/components/sections/ProjectsSection';
+import ExperienceSection from '@/components/sections/ExperienceSection';
+import ContactSection from '@/components/sections/ContactSection';
+import { TABS, type TabId } from '@/lib/tabs';
+import { useScrollSpy } from '@/lib/useScrollSpy';
+
+const SECTION_IDS = TABS.map((tab) => tab.id);
+
+function scrollToSection(id: TabId) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+}
 
 export default function PortfolioApp() {
-  const [active, setActive] = useState<TabId>('home');
-  const shouldReduceMotion = useReducedMotion();
+  const active = useScrollSpy(SECTION_IDS) as TabId;
 
   return (
     <>
-      <Header active={active} onNavigate={setActive} />
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={active}
-          initial={shouldReduceMotion ? undefined : { opacity: 0, y: 12, filter: 'blur(6px)' }}
-          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          exit={shouldReduceMotion ? undefined : { opacity: 0, y: -12, filter: 'blur(6px)' }}
-          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        >
-          {active === 'home' && <HomeTab onNavigate={setActive} />}
-          {active === 'projects' && <ProjectsTab />}
-          {active === 'experience' && <ExperienceTab />}
-          {active === 'contact' && <ContactTab />}
-          <Footer onNavigate={setActive} />
-        </motion.div>
-      </AnimatePresence>
+      <Header active={active} onNavigate={scrollToSection} />
+
+      <div id="home" className="scroll-mt-24">
+        <Hero onNavigate={scrollToSection} />
+      </div>
+
+      <div className="scroll-mt-24">
+        <AboutSection />
+      </div>
+
+      <div id="projects" className="scroll-mt-24">
+        <ProjectsSection />
+      </div>
+
+      <div id="experience" className="scroll-mt-24">
+        <ExperienceSection />
+      </div>
+
+      <div id="contact" className="scroll-mt-24">
+        <ContactSection />
+      </div>
+
+      <Footer onNavigate={scrollToSection} />
+
       <div className="md:hidden">
-        <TabNav active={active} onChange={setActive} />
+        <TabNav active={active} onChange={scrollToSection} />
       </div>
     </>
   );

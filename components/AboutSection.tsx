@@ -22,7 +22,7 @@ export default function AboutSection() {
   const { locale } = useLanguage();
 
   return (
-    <div className="mx-auto max-w-3xl px-6">
+    <div className="mx-auto max-w-3xl px-6 py-16">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}

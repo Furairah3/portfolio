@@ -8,7 +8,7 @@ import { PROFILE } from '@/lib/profile';
 import { useLanguage } from '@/lib/LanguageContext';
 import { t } from '@/lib/translations';
 
-export default function ContactTab() {
+export default function ContactSection() {
   const [copied, setCopied] = useState(false);
   const { locale } = useLanguage();
 
@@ -19,8 +19,13 @@ export default function ContactTab() {
   }
 
   return (
-    <div className="mx-auto max-w-2xl px-6 pb-10 pt-24 text-center">
-      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+    <div className="mx-auto max-w-2xl px-6 py-16 text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.5 }}
+      >
         <p className="text-xs font-semibold uppercase tracking-widest text-aurora-blue">
           {t(locale, 'contact', 'eyebrow')}
         </p>

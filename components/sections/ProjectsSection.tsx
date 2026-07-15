@@ -9,12 +9,17 @@ import { COURSEWORK } from '@/lib/coursework';
 import { useLanguage } from '@/lib/LanguageContext';
 import { t } from '@/lib/translations';
 
-export default function ProjectsTab() {
+export default function ProjectsSection() {
   const { locale } = useLanguage();
 
   return (
-    <div className="mx-auto max-w-5xl px-6 pb-10 pt-24">
-      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+    <div className="mx-auto max-w-5xl px-6 py-16">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.5 }}
+      >
         <p className="text-xs font-semibold uppercase tracking-widest text-aurora-blue">
           {t(locale, 'projects', 'eyebrow')}
         </p>

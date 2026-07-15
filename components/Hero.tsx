@@ -2,15 +2,12 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, useReducedMotion, type Variants } from 'framer-motion';
-import { ArrowRight, ExternalLink, Mail, Briefcase, FolderGit2, MessageCircle } from 'lucide-react';
+import { ArrowRight, ExternalLink, Mail } from 'lucide-react';
 import KineticText from '@/components/KineticText';
 import TiltCard from '@/components/TiltCard';
 import SkillsMarquee from '@/components/SkillsMarquee';
 import ProjectImageMarquee from '@/components/ProjectImageMarquee';
-import AboutSection from '@/components/AboutSection';
-import type { TabId } from '@/lib/tabs';
 import { PROFILE } from '@/lib/profile';
-import { PROJECTS } from '@/lib/projects';
 import { useLanguage } from '@/lib/LanguageContext';
 import { t } from '@/lib/translations';
 
@@ -24,7 +21,7 @@ const heroItem: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
 
-export default function HomeTab({ onNavigate }: { onNavigate: (id: TabId) => void }) {
+export default function Hero({ onNavigate }: { onNavigate: (id: 'projects' | 'contact') => void }) {
   const heroRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
@@ -32,35 +29,8 @@ export default function HomeTab({ onNavigate }: { onNavigate: (id: TabId) => voi
   const heroOpacity = useTransform(scrollYProgress, [0, 0.9], [1, shouldReduceMotion ? 1 : 0.25]);
   const { locale } = useLanguage();
 
-  const QUICK_LOOK: { id: TabId; icon: typeof Briefcase; title: string; body: string; cta: string }[] = [
-    {
-      id: 'experience',
-      icon: Briefcase,
-      title: t(locale, 'quickLook', 'experienceTitle'),
-      body: t(locale, 'quickLook', 'experienceBody'),
-      cta: t(locale, 'quickLook', 'experienceCta'),
-    },
-    {
-      id: 'projects',
-      icon: FolderGit2,
-      title: t(locale, 'quickLook', 'projectsTitle'),
-      body:
-        locale === 'fr'
-          ? `${PROJECTS.length} projets réels — d'un site national pour les droits des personnes handicapées à une plateforme de gestion des risques pour MTN Ghana.`
-          : `${PROJECTS.length} real builds — from a nationwide disability-rights website to an enterprise risk platform for MTN Ghana.`,
-      cta: t(locale, 'quickLook', 'projectsCta'),
-    },
-    {
-      id: 'contact',
-      icon: MessageCircle,
-      title: t(locale, 'quickLook', 'contactTitle'),
-      body: t(locale, 'quickLook', 'contactBody'),
-      cta: t(locale, 'quickLook', 'contactCta'),
-    },
-  ];
-
   return (
-    <div className="pb-10 pt-24">
+    <div className="pb-10 pt-28">
       <div ref={heroRef} className="mx-auto flex min-h-[70vh] max-w-3xl flex-col items-center justify-center px-6 text-center">
         <motion.div
           variants={heroContainer}
@@ -123,10 +93,6 @@ export default function HomeTab({ onNavigate }: { onNavigate: (id: TabId) => voi
         </motion.div>
       </div>
 
-      <div className="mt-20">
-        <AboutSection />
-      </div>
-
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -141,34 +107,6 @@ export default function HomeTab({ onNavigate }: { onNavigate: (id: TabId) => voi
           <ProjectImageMarquee />
         </div>
       </motion.div>
-
-      <div className="mx-auto mt-20 grid max-w-5xl gap-5 px-6 sm:grid-cols-3">
-        {QUICK_LOOK.map((item, i) => {
-          const Icon = item.icon;
-          return (
-            <motion.button
-              key={item.id}
-              onClick={() => onNavigate(item.id)}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-              className="group focus-ring text-left"
-            >
-              <TiltCard className="h-full p-6 transition-shadow hover:shadow-2xl">
-                <div className="flex items-center gap-2">
-                  <Icon className="h-5 w-5 text-aurora-blue" aria-hidden="true" />
-                  <h3 className="font-display text-lg font-bold text-white">{item.title}</h3>
-                </div>
-                <p className="mt-2 text-sm leading-relaxed text-slate-300">{item.body}</p>
-                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-aurora-blue transition-transform group-hover:translate-x-1">
-                  {item.cta} <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-                </span>
-              </TiltCard>
-            </motion.button>
-          );
-        })}
-      </div>
     </div>
   );
 }
