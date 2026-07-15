@@ -5,10 +5,11 @@ import KineticText from '@/components/KineticText';
 import TiltCard from '@/components/TiltCard';
 import SkillsMarquee from '@/components/SkillsMarquee';
 import type { TabId } from '@/lib/tabs';
+import { PROFILE } from '@/lib/profile';
 
 export default function HomeTab({ onNavigate }: { onNavigate: (id: TabId) => void }) {
   return (
-    <div className="mx-auto flex min-h-[85vh] max-w-3xl flex-col items-center justify-center px-6 pb-32 pt-24 text-center">
+    <div className="mx-auto flex min-h-[85vh] max-w-3xl flex-col items-center justify-center px-6 pb-10 pt-24 text-center">
       <p className="glass-pill px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-aurora-violet dark:text-aurora-blue">
         Software Engineer
       </p>
@@ -39,7 +40,7 @@ export default function HomeTab({ onNavigate }: { onNavigate: (id: TabId) => voi
           <Mail className="h-4 w-4" aria-hidden="true" /> Get in Touch
         </button>
         <a
-          href="https://github.com/Furairah3"
+          href={PROFILE.github}
           target="_blank"
           rel="noopener noreferrer"
           className="glass-pill focus-ring inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-slate-800 transition-transform hover:scale-105 dark:text-white"

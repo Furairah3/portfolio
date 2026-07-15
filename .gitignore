@@ -26,3 +26,6 @@ next-env.d.ts
 
 # personal documents dropped for content extraction — not for the public repo
 /cv-drop
+
+.vercel
+.env*

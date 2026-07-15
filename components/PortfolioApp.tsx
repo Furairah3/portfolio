@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import TabNav from '@/components/TabNav';
+import Footer from '@/components/Footer';
 import HomeTab from '@/components/tabs/HomeTab';
 import ProjectsTab from '@/components/tabs/ProjectsTab';
 import AboutTab from '@/components/tabs/AboutTab';
@@ -29,6 +30,7 @@ export default function PortfolioApp() {
           {active === 'about' && <AboutTab />}
           {active === 'experience' && <ExperienceTab />}
           {active === 'contact' && <ContactTab />}
+          <Footer />
         </motion.div>
       </AnimatePresence>
       <TabNav active={active} onChange={setActive} />

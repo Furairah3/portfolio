@@ -6,11 +6,24 @@ export type Project = {
   language: string;
   tags: string[];
   featured?: boolean;
+  org?: string;
 };
 
-// Curated from github.com/Furairah3 — real repos, hand-picked and re-titled for
-// a portfolio audience. Skipped: coursework/lab repos with no standalone story.
+// Curated from github.com/Furairah3 and collaborator repos — real repos, hand-picked
+// and re-titled for a portfolio audience. Skipped: coursework/lab repos with no
+// standalone story (see COURSEWORK in lib/coursework.ts for those instead).
 export const PROJECTS: Project[] = [
+  {
+    name: 'mtn_quantrisk',
+    title: 'QuantRisk — MTN Ghana',
+    description:
+      'Enterprise risk intelligence platform built during a Risk & Compliance internship at MTN Ghana: Monte Carlo simulation, VaR/CVaR, copula models, and LSTM/XGBoost forecasting with SHAP-powered explainability for operational, financial, and compliance risk.',
+    url: 'https://github.com/adoumouangnamouemmanuel/mtn_quantrisk',
+    language: 'TypeScript',
+    tags: ['Risk modeling', 'Simulation', 'ML forecasting'],
+    featured: true,
+    org: 'MTN Ghana — team project',
+  },
   {
     name: 'defotanzania',
     title: 'Disability Enlightenment Foundation — Tanzania',
@@ -35,17 +48,26 @@ export const PROJECTS: Project[] = [
     name: 'healthConnect',
     title: 'HealthConnect',
     description:
-      'Telehealth platform connecting patients in underserved rural areas with volunteer health workers and doctors for remote consultations.',
+      'Full-stack digital health platform (PHP, MySQL, JavaScript) improving access to reliable healthcare information and consultations through role-based dashboards for patients, doctors, and administrators.',
     url: 'https://github.com/Furairah3/healthConnect',
     language: 'PHP',
     tags: ['Telehealth', 'Accessibility'],
     featured: true,
   },
   {
+    name: 'kalmar-lafiya-assistant',
+    title: 'Kalmar Lafiya Assistant',
+    description:
+      'A per-disease health information assistant — continuing the health-access focus of HealthConnect and Gaggawa in a lighter, chat-style format.',
+    url: 'https://github.com/Furairah3/kalmar-lafiya-assistant',
+    language: 'TypeScript',
+    tags: ['Health tech', 'AI assistant'],
+  },
+  {
     name: 'Webtech-Academie-Libre-Projects',
     title: 'Académie Libre',
     description:
-      "Niger's first online platform built for candidats libres — past exam papers, interactive quizzes, and AI-powered feedback in one place.",
+      "Niger's first online platform built for candidats libres — past exam papers, interactive quizzes, and AI-powered feedback in one place, addressing limited access to quality educational materials.",
     url: 'https://github.com/Furairah3/Webtech-Academie-Libre-Projects',
     language: 'JavaScript',
     tags: ['EdTech', 'AI feedback'],
