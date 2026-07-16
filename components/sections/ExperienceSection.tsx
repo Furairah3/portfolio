@@ -60,7 +60,7 @@ export default function ExperienceSection() {
   const { locale } = useLanguage();
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
+    <div className="mx-auto w-full max-w-[1800px] px-6 py-16 sm:px-10 lg:px-16 xl:px-24">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -76,7 +76,7 @@ export default function ExperienceSection() {
         <p className="mt-3 max-w-2xl text-slate-300">{t(locale, 'experience', 'intro')}</p>
       </motion.div>
 
-      <div className="mt-10">
+      <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:gap-8">
         <Track
           title={t(locale, 'experience', 'techTrack')}
           icon={Code2}
@@ -84,8 +84,6 @@ export default function ExperienceSection() {
           delay={0.1}
           locale={locale}
         />
-      </div>
-      <div className="mt-12">
         <Track
           title={t(locale, 'experience', 'healthTrack')}
           icon={HeartPulse}

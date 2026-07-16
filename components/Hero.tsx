@@ -31,7 +31,10 @@ export default function Hero({ onNavigate }: { onNavigate: (id: 'projects' | 'co
 
   return (
     <div className="pb-10 pt-28">
-      <div ref={heroRef} className="mx-auto flex min-h-[70vh] max-w-3xl flex-col items-center justify-center px-6 text-center">
+      <div
+        ref={heroRef}
+        className="mx-auto flex min-h-[70vh] w-full max-w-[1800px] flex-col items-center justify-center px-6 text-center sm:px-10 lg:px-16 xl:px-24"
+      >
         <motion.div
           variants={heroContainer}
           initial="hidden"

@@ -13,7 +13,7 @@ export default function Header({ active, onNavigate }: { active: TabId; onNaviga
 
   return (
     <header className="fixed inset-x-0 top-0 z-40 w-full border-b border-white/10 bg-[#0a0c1e]/90 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-8 sm:py-5">
+      <div className="mx-auto flex w-full max-w-[1800px] items-center justify-between gap-4 px-6 py-4 sm:px-10 sm:py-5 lg:px-16 xl:px-24">
         <button
           onClick={() => onNavigate('home')}
           className="focus-ring flex items-center gap-3 rounded-full py-1 pr-2"

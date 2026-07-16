@@ -13,7 +13,7 @@ export default function ProjectsSection() {
   const { locale } = useLanguage();
 
   return (
-    <div className="mx-auto max-w-5xl px-6 py-16">
+    <div className="mx-auto w-full max-w-[1800px] px-6 py-16 sm:px-10 lg:px-16 xl:px-24">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -29,7 +29,7 @@ export default function ProjectsSection() {
         <p className="mt-3 max-w-2xl text-slate-300">{t(locale, 'projects', 'intro')}</p>
       </motion.div>
 
-      <div className="mt-10 grid gap-5 sm:grid-cols-2">
+      <div className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
         {PROJECTS.map((project, i) => (
           <motion.a
             key={project.name}

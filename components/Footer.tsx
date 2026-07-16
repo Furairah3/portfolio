@@ -12,8 +12,8 @@ export default function Footer({ onNavigate }: { onNavigate: (id: TabId) => void
 
   return (
     <footer className="mt-8 w-full border-t border-white/10 bg-[#0a0c1e]/90 backdrop-blur-xl">
-      <div className="mx-auto max-w-6xl px-4 pb-32 pt-14 sm:px-8 md:pb-14">
-        <div className="grid gap-10 sm:grid-cols-3">
+      <div className="mx-auto w-full max-w-[1800px] px-6 pb-32 pt-14 sm:px-10 md:pb-14 lg:px-16 xl:px-24">
+        <div className="grid gap-10 sm:grid-cols-3 lg:grid-cols-[1.5fr,1fr,1fr]">
           <div>
             <button onClick={() => onNavigate('home')} className="focus-ring flex items-center gap-3 rounded-full">
               <span className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full ring-2 ring-white/20">
@@ -26,7 +26,7 @@ export default function Footer({ onNavigate }: { onNavigate: (id: TabId) => void
                 </span>
               </span>
             </button>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">{t(locale, 'hero', 'intro')}</p>
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-slate-400">{t(locale, 'hero', 'intro')}</p>
             <p className="mt-4 flex items-center gap-1.5 text-xs text-slate-400">
               <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden="true" /> {PROFILE.location}
             </p>

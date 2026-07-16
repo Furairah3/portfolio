@@ -22,7 +22,7 @@ export default function AboutSection() {
   const { locale } = useLanguage();
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-16">
+    <div className="mx-auto w-full max-w-[1800px] px-6 py-16 sm:px-10 lg:px-16 xl:px-24">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -37,7 +37,7 @@ export default function AboutSection() {
         </h2>
       </motion.div>
 
-      <div className="mt-8 grid gap-8 sm:grid-cols-[auto,1fr] sm:items-start">
+      <div className="mt-8 grid max-w-4xl gap-8 sm:grid-cols-[auto,1fr] sm:items-start">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -75,7 +75,8 @@ export default function AboutSection() {
         </div>
       </div>
 
-      <TiltCard className="mt-10 p-8">
+      <div className="mt-10 grid gap-6 lg:grid-cols-3">
+      <TiltCard className="p-8">
         <div className="mb-5 flex items-center gap-2">
           <GraduationCap className="h-5 w-5 text-aurora-blue" aria-hidden="true" />
           <h3 className="font-display text-lg font-bold text-white">{t(locale, 'about', 'education')}</h3>
@@ -103,7 +104,7 @@ export default function AboutSection() {
         </motion.div>
       </TiltCard>
 
-      <TiltCard className="mt-6 p-8">
+      <TiltCard className="p-8">
         <div className="mb-5 flex items-center gap-2">
           <Trophy className="h-5 w-5 text-aurora-blue" aria-hidden="true" />
           <h3 className="font-display text-lg font-bold text-white">{t(locale, 'about', 'awards')}</h3>
@@ -131,7 +132,7 @@ export default function AboutSection() {
         </motion.div>
       </TiltCard>
 
-      <TiltCard className="mt-6 p-8">
+      <TiltCard className="p-8">
         <div className="mb-5 flex items-center gap-2">
           <Languages className="h-5 w-5 text-aurora-blue" aria-hidden="true" />
           <h3 className="font-display text-lg font-bold text-white">{t(locale, 'about', 'languages')}</h3>
@@ -155,6 +156,7 @@ export default function AboutSection() {
           ))}
         </motion.div>
       </TiltCard>
+      </div>
     </div>
   );
 }

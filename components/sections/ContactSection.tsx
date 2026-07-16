@@ -19,7 +19,8 @@ export default function ContactSection() {
   }
 
   return (
-    <div className="mx-auto max-w-2xl px-6 py-16 text-center">
+    <div className="mx-auto w-full max-w-[1800px] px-6 py-16 text-center sm:px-10 lg:px-16 xl:px-24">
+      <div className="mx-auto max-w-2xl">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -74,6 +75,7 @@ export default function ContactSection() {
           </a>
         </div>
       </TiltCard>
+      </div>
     </div>
   );
 }
