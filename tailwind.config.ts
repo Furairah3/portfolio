@@ -26,6 +26,7 @@ const config: Config = {
         marquee: 'marquee 30s linear infinite',
         'marquee-reverse': 'marquee-reverse 36s linear infinite',
         float: 'float 7s ease-in-out infinite',
+        'gradient-shift': 'gradient-shift 5s ease infinite',
       },
       keyframes: {
         blob1: {
@@ -58,6 +59,10 @@ const config: Config = {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-10px)' },
+        },
+        'gradient-shift': {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
         },
       },
       backdropBlur: {
