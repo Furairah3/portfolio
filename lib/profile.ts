@@ -8,6 +8,9 @@ export const PROFILE = {
   phone: '+227 92 43 24 42',
   linkedin: 'https://www.linkedin.com/in/furairah-zakari',
   github: 'https://github.com/Furairah3',
+  // Fill in once handles are provided — left blank rather than guessed.
+  twitter: '',
+  instagram: '',
   languages: [
     { nameEn: 'French', nameFr: 'Français', levelEn: 'Fluent', levelFr: 'Courant' },
     { nameEn: 'Hausa', nameFr: 'Haoussa', levelEn: 'Excellent', levelFr: 'Excellent' },

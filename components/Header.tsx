@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Mail, Link2, ExternalLink } from 'lucide-react';
+import { FaEnvelope, FaLinkedin, FaGithub, FaXTwitter, FaInstagram } from 'react-icons/fa6';
 import { PROFILE } from '@/lib/profile';
 import { TABS, type TabId } from '@/lib/tabs';
 import { useLanguage } from '@/lib/LanguageContext';
@@ -49,7 +49,7 @@ export default function Header({ active, onNavigate }: { active: TabId; onNaviga
             aria-label="Email"
             className="focus-ring hidden h-9 w-9 items-center justify-center rounded-full text-white/70 transition-transform hover:scale-110 sm:flex"
           >
-            <Mail className="h-4 w-4" aria-hidden="true" />
+            <FaEnvelope className="h-4 w-4" aria-hidden="true" />
           </a>
           <a
             href={PROFILE.linkedin}
@@ -58,8 +58,30 @@ export default function Header({ active, onNavigate }: { active: TabId; onNaviga
             aria-label="LinkedIn"
             className="focus-ring hidden h-9 w-9 items-center justify-center rounded-full text-white/70 transition-transform hover:scale-110 sm:flex"
           >
-            <Link2 className="h-4 w-4" aria-hidden="true" />
+            <FaLinkedin className="h-4 w-4" aria-hidden="true" />
           </a>
+          {PROFILE.twitter && (
+            <a
+              href={PROFILE.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="X (Twitter)"
+              className="focus-ring hidden h-9 w-9 items-center justify-center rounded-full text-white/70 transition-transform hover:scale-110 sm:flex"
+            >
+              <FaXTwitter className="h-4 w-4" aria-hidden="true" />
+            </a>
+          )}
+          {PROFILE.instagram && (
+            <a
+              href={PROFILE.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="focus-ring hidden h-9 w-9 items-center justify-center rounded-full text-white/70 transition-transform hover:scale-110 sm:flex"
+            >
+              <FaInstagram className="h-4 w-4" aria-hidden="true" />
+            </a>
+          )}
           <a
             href={PROFILE.github}
             target="_blank"
@@ -67,7 +89,7 @@ export default function Header({ active, onNavigate }: { active: TabId; onNaviga
             aria-label="GitHub"
             className="focus-ring flex h-9 w-9 items-center justify-center rounded-full text-white/70 transition-transform hover:scale-110"
           >
-            <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            <FaGithub className="h-4 w-4" aria-hidden="true" />
           </a>
         </div>
       </div>

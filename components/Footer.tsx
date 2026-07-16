@@ -1,7 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { Mail, Link2, ExternalLink, Phone, MapPin } from 'lucide-react';
+import { Phone, MapPin, GraduationCap } from 'lucide-react';
+import { FaEnvelope, FaLinkedin, FaGithub, FaXTwitter, FaInstagram } from 'react-icons/fa6';
 import { PROFILE } from '@/lib/profile';
 import { TABS, type TabId } from '@/lib/tabs';
 import { useLanguage } from '@/lib/LanguageContext';
@@ -60,7 +61,15 @@ export default function Footer({ onNavigate }: { onNavigate: (id: TabId) => void
                   href={`mailto:${PROFILE.emailPersonal}`}
                   className="focus-ring flex items-center gap-2 text-sm text-slate-300 transition-colors hover:text-white"
                 >
-                  <Mail className="h-4 w-4 shrink-0 text-aurora-blue" aria-hidden="true" /> {PROFILE.emailPersonal}
+                  <FaEnvelope className="h-4 w-4 shrink-0 text-aurora-blue" aria-hidden="true" /> {PROFILE.emailPersonal}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${PROFILE.emailSchool}`}
+                  className="focus-ring flex items-center gap-2 text-sm text-slate-300 transition-colors hover:text-white"
+                >
+                  <GraduationCap className="h-4 w-4 shrink-0 text-aurora-blue" aria-hidden="true" /> {PROFILE.emailSchool}
                 </a>
               </li>
               <li>
@@ -78,9 +87,33 @@ export default function Footer({ onNavigate }: { onNavigate: (id: TabId) => void
                   rel="noopener noreferrer"
                   className="focus-ring flex items-center gap-2 text-sm text-slate-300 transition-colors hover:text-white"
                 >
-                  <Link2 className="h-4 w-4 shrink-0 text-aurora-blue" aria-hidden="true" /> LinkedIn
+                  <FaLinkedin className="h-4 w-4 shrink-0 text-aurora-blue" aria-hidden="true" /> LinkedIn
                 </a>
               </li>
+              {PROFILE.twitter && (
+                <li>
+                  <a
+                    href={PROFILE.twitter}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="focus-ring flex items-center gap-2 text-sm text-slate-300 transition-colors hover:text-white"
+                  >
+                    <FaXTwitter className="h-4 w-4 shrink-0 text-aurora-blue" aria-hidden="true" /> X (Twitter)
+                  </a>
+                </li>
+              )}
+              {PROFILE.instagram && (
+                <li>
+                  <a
+                    href={PROFILE.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="focus-ring flex items-center gap-2 text-sm text-slate-300 transition-colors hover:text-white"
+                  >
+                    <FaInstagram className="h-4 w-4 shrink-0 text-aurora-blue" aria-hidden="true" /> Instagram
+                  </a>
+                </li>
+              )}
               <li>
                 <a
                   href={PROFILE.github}
@@ -88,7 +121,7 @@ export default function Footer({ onNavigate }: { onNavigate: (id: TabId) => void
                   rel="noopener noreferrer"
                   className="focus-ring flex items-center gap-2 text-sm text-slate-300 transition-colors hover:text-white"
                 >
-                  <ExternalLink className="h-4 w-4 shrink-0 text-aurora-blue" aria-hidden="true" /> GitHub
+                  <FaGithub className="h-4 w-4 shrink-0 text-aurora-blue" aria-hidden="true" /> GitHub
                 </a>
               </li>
             </ul>

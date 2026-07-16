@@ -3,7 +3,8 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform, useReducedMotion, type Variants } from 'framer-motion';
-import { ArrowRight, ExternalLink, Mail } from 'lucide-react';
+import { ArrowRight, Mail } from 'lucide-react';
+import { FaGithub } from 'react-icons/fa6';
 import KineticText from '@/components/KineticText';
 import TiltCard from '@/components/TiltCard';
 import SkillsMarquee from '@/components/SkillsMarquee';
@@ -34,7 +35,7 @@ export default function Hero({ onNavigate }: { onNavigate: (id: 'projects' | 'co
     <div className="pb-10 pt-28">
       <div
         ref={heroRef}
-        className="mx-auto grid w-full max-w-[1800px] items-center gap-12 px-6 py-8 sm:px-10 lg:grid-cols-2 lg:gap-16 lg:px-16 xl:px-24"
+        className="mx-auto grid w-full max-w-[1800px] items-center gap-12 px-6 py-8 sm:px-10 lg:grid-cols-[1fr,1.15fr] lg:gap-8 lg:px-16 xl:px-24"
       >
         <motion.div
           variants={heroContainer}
@@ -88,7 +89,7 @@ export default function Hero({ onNavigate }: { onNavigate: (id: 'projects' | 'co
               rel="noopener noreferrer"
               className="glass-pill focus-ring inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
             >
-              <ExternalLink className="h-4 w-4" aria-hidden="true" /> GitHub
+              <FaGithub className="h-4 w-4" aria-hidden="true" /> GitHub
             </a>
           </motion.div>
         </motion.div>
@@ -97,20 +98,17 @@ export default function Hero({ onNavigate }: { onNavigate: (id: 'projects' | 'co
           initial={{ opacity: 0, scale: 0.92, x: shouldReduceMotion ? 0 : 24 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          className="mx-auto w-full max-w-md lg:max-w-none"
+          className="animate-float relative mx-auto aspect-[3/4] w-full max-w-lg overflow-hidden rounded-[32px] lg:aspect-auto lg:h-[680px] lg:max-w-none lg:overflow-visible lg:rounded-none"
         >
-          <div className="glass animate-float relative aspect-[4/5] w-full overflow-hidden rounded-[32px] p-2">
-            <div className="relative h-full w-full overflow-hidden rounded-[24px]">
-              <Image
-                src="/images/portrait.jpg"
-                alt={PROFILE.name}
-                fill
-                sizes="(min-width: 1024px) 40vw, 90vw"
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0c1e]/50 via-transparent to-transparent" />
-            </div>
+          <div className="relative h-full w-full lg:[-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_20%,black_100%)] lg:[mask-image:linear-gradient(to_right,transparent_0%,black_20%,black_100%)]">
+            <Image
+              src="/images/hero-portrait.png"
+              alt={PROFILE.name}
+              fill
+              sizes="(min-width: 1024px) 55vw, 90vw"
+              className="object-cover object-top"
+              priority
+            />
           </div>
         </motion.div>
       </div>
